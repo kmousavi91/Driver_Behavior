@@ -27,9 +27,12 @@ This project uses sensor data to classify driver behavior as one of several cate
 ├── ingest.py              # Cleans and prepares sensor data
 ├── model_training.py      # Trains and saves the model
 ├── driver_behavior_model.pkl  # Trained model file
-├── windowed_features.csv  # Final dataset with features
+├── data/
+        windowed_features.csv
+        cleaned_sensor_data.csv
+        sensor_raw.csv
 ├── logs/                  # Logs of predictions
-├── feature_importance.png # Visual of top features
+├── plots/
 ├── requirements.txt
 └── README.md
 ```
@@ -77,8 +80,8 @@ Send a POST request to `/predict` with this example:
 
 ```json
 {
-  "predicted_class": 2,
-  "label": "Risky"
+  "predicted_class": 4,
+  "label": "Dangerous"
 }
 ```
 
@@ -94,7 +97,7 @@ Send a POST request to `/predict` with this example:
 ## 📌 Notes
 
 * Model must receive **exactly 16 float values** in the same order as training.
-* All logging and behavior classification happens locally.
+* All logging and behavior classification happen locally.
 * Designed to run on EC2, but works fully on local machines too.
 
 ---
